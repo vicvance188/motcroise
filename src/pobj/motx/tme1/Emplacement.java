@@ -17,9 +17,20 @@ public class Emplacement {
 		return res;
 	}
 	
+	public void add(Case caze) {
+		this.add(caze);
+	}
+	
+	public void clear() {
+		this.clear();
+	}
+	
+	public Case get(int index) {
+		return this.get(index);
+	}
+	
 	public int size() {
-		
-		return lettres.size();
+		return this.size();
 	}
 	
 }
