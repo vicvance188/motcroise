@@ -1,12 +1,14 @@
 package pobj.motx.tme1;
 
 import java.util.List;
+import java.util.ArrayList;
+
 
 public class Emplacement {
 	private List<Case> lettres;
 	
 	public Emplacement() {
-		
+		lettres = new ArrayList<Case>();
 	}
 	
 	public String toString() {

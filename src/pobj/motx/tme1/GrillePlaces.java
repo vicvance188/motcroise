@@ -31,7 +31,6 @@ public class GrillePlaces {
 							temp.add(grille.getCase(lig, col));
 						}
 						places.add(temp);
-						temp.clear();
 					}
 				}
 			}
@@ -43,6 +42,12 @@ public class GrillePlaces {
 				// suivant étant à droite ou en bas (ou alors 2 boucles) si le suivant est une lettre
 				//également, alors on ajoute ces deux cases et toute celle qui suivent dans places[i]
 				//places etant une liste de list.
+	/*si elle est non pleine, nous l’ajoutons à l’emplacement,
+	• sinon, nous examinons la taille de l’emplacement construit,
+	– s’il fait au moins deux lettres, nous l’ajoutons aux emplacements de mots détectés,
+	– sinon, nous réinitialisons l’emplacement.
+	N’oubliez pas (à la fin de l’itération) d’ajouter le dernier emplacement trouvé s’il est assez long.
+	*/
 
 	public List<Emplacement> getPlaces(){
 		return places;
