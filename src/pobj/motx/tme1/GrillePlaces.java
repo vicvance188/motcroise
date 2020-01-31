@@ -1,65 +1,29 @@
 package pobj.motx.tme1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GrillePlaces {
-	
-	private List<Emplacement> places;
-	
-	public GrillePlaces(Grille grille) {
-		int col = 0;
-		int lig = 0;
-		Emplacement temp = new Emplacement();
-		
-		for(lig = 0; lig<grille.nbLig();lig++) {
-			for(col = 0; col<grille.nbCol();col++) {
-				if( grille.getCase(lig, col).getChar() != ' ' && grille.getCase(lig, col).getChar() != '*') {
-					if(grille.getCase(lig+1, col).getChar() != ' ' && grille.getCase(lig+1, col).getChar() != '*') {
-						while(grille.getCase(lig+1, col).getChar() != ' ' && grille.getCase(lig+1, col).getChar() != '*') {
-							temp.add(grille.getCase(lig, col));
-						}
-					}
-				}
-			}
-		}
-		
-		for(col = 0; col<grille.nbCol();col++) {
-			for(lig = 0; lig<grille.nbLig();lig++) {
-				if( grille.getCase(lig, col).getChar() != ' ' && grille.getCase(lig, col).getChar() != '*') {
-					if(grille.getCase(lig, col+1).getChar() != ' ' && grille.getCase(lig, col+1).getChar() != '*') {
-						while(col<grille.nbCol() && lig < grille.nbLig() && grille.getCase(lig, col+1).getChar() != ' ' && grille.getCase(lig, col+1).getChar() != '*') {
-							temp.add(grille.getCase(lig, col));
-						}
-						places.add(temp);
-					}
-				}
-			}
-		}			//code non factorisé, à optimisé, comme la c'est moche !
-	}
-				
-				//on peut creer un emplacement, l'append dans place, puis le clear.
-				//on parcourt la grille, si on trouve une lettre, on regarde si le suivant en est une
-				// suivant étant à droite ou en bas (ou alors 2 boucles) si le suivant est une lettre
-				//également, alors on ajoute ces deux cases et toute celle qui suivent dans places[i]
-				//places etant une liste de list.
-	/*si elle est non pleine, nous l’ajoutons à l’emplacement,
-	• sinon, nous examinons la taille de l’emplacement construit,
-	– s’il fait au moins deux lettres, nous l’ajoutons aux emplacements de mots détectés,
-	– sinon, nous réinitialisons l’emplacement.
-	N’oubliez pas (à la fin de l’itération) d’ajouter le dernier emplacement trouvé s’il est assez long.
-	*/
 
-	public List<Emplacement> getPlaces(){
+	private List<Emplacement> places;
+	private Grille grille;
+
+	public GrillePlaces(Grille grille) {
+		this.grille = grille;
+
+	}
+
+	public List<Emplacement> getPlaces() {
 		return places;
 	}
-	
+
 	public int getNbHorizontal() {
 		// ????
 	}
-	
+
 	public String toString() {
 		String res = "";
-		for(int i = 0; i<places.size(); i++) {
+		for (int i = 0; i < places.size(); i++) {
 			for (int j = 0; j < places.get(i).size(); j++) {
 				res += places.get(i).get(j).toString();
 				res += "  ";
@@ -68,20 +32,76 @@ public class GrillePlaces {
 		}
 		return res;
 	}
-	
+
 	private List<Case> getLig(int lig){
-		
+		int col = 0;
+		List<Case>res = new ArrayList<Case>();
+		for(col=0; col<grille.nbCol();col++) {
+			res.add(grille.getCase(lig, col));
+		}
+		return res;		
 	}
-	
-	private List<Case> getCol(int col){
-		
+
+	private List<Case> getCol(int col) {
+		int lig = 0;
+		List<Case>res = new ArrayList<Case>();
+		for(lig=0; lig<grille.nbCol();lig++) {
+			res.add(grille.getCase(lig, col));
+		}
+		return res;		
 	}
-	
+
 	private void cherchePlaces(List<Case> cases) {
 		
+		
+		
+		int col = 0;
+		int lig = 0;
+		Emplacement temp = new Emplacement();
+
+		for (lig = 0; lig < grille.nbLig(); lig++) {
+			for (col = 0; col < grille.nbCol(); col++) {
+				if (grille.getCase(lig, col).getChar() != ' ' && grille.getCase(lig, col).getChar() != '*') {
+					if (grille.getCase(lig + 1, col).getChar() != ' '
+							&& grille.getCase(lig + 1, col).getChar() != '*') {
+						while (grille.getCase(lig + 1, col).getChar() != ' '
+								&& grille.getCase(lig + 1, col).getChar() != '*') {
+							temp.add(grille.getCase(lig, col));
+						}
+					}
+				}
+			}
+		}
+
+		for (col = 0; col < grille.nbCol(); col++) {
+			for (lig = 0; lig < grille.nbLig(); lig++) {
+				if (grille.getCase(lig, col).getChar() != ' ' && grille.getCase(lig, col).getChar() != '*') {
+					if (grille.getCase(lig, col + 1).getChar() != ' '
+							&& grille.getCase(lig, col + 1).getChar() != '*') {
+						while (col < grille.nbCol() && lig < grille.nbLig()
+								&& grille.getCase(lig, col + 1).getChar() != ' '
+								&& grille.getCase(lig, col + 1).getChar() != '*') {
+							temp.add(grille.getCase(lig, col));
+						}
+						places.add(temp);
+					}
+				}
+			}
+		}
+
+		Emplacement empl = new Emplacement();
+		for()
+		
+			
+			
+			
+		/*
+		 * si elle est non pleine, nous l’ajoutons à l’emplacement, • sinon, nous
+		 * examinons la taille de l’emplacement construit, – s’il fait au moins deux
+		 * lettres, nous l’ajoutons aux emplacements de mots détectés, – sinon, nous
+		 * réinitialisons l’emplacement. N’oubliez pas (à la fin de l’itération)
+		 * d’ajouter le dernier emplacement trouvé s’il est assez long.
+		 */
 	}
-	
-	
-	
-	
+
 }
