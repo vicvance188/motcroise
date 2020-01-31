@@ -93,9 +93,10 @@ public class GrillePlaces {
 		List<Case> temp;
 		int lig = 0;
 		int col = 0;
+		
 		for(lig = 0; lig < grille.nbLig(); lig++) {
 			temp = this.getLig(lig);
-			for(int col = 0; col<grille.nbCol(); col++) {
+			for(col = 0; col<grille.nbCol(); col++) {
 				if(! temp.get(col).isPleine() ) {
 					empl.add(temp.get(col));
 				}
@@ -104,10 +105,10 @@ public class GrillePlaces {
 				places.add(empl);
 			}
 		}
-		int lig = 0;
-		for(lig = 0; lig < grille.nbLig(); lig++) {
+
+		for(col = 0; col < grille.nbLig(); col++) {
 			temp = this.getLig(lig);
-			for(int col = 0; col<grille.nbCol(); col++) {
+			for(col = 0; col<grille.nbCol(); col++) {
 				if(! temp.get(col).isPleine() ) {
 					empl.add(temp.get(col));
 				}
