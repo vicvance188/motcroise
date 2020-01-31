@@ -54,7 +54,7 @@ public class GrillePlaces {
 	private void cherchePlaces(List<Case> cases) {
 		
 		
-		
+		/*
 		int col = 0;
 		int lig = 0;
 		Emplacement temp = new Emplacement();
@@ -88,9 +88,34 @@ public class GrillePlaces {
 				}
 			}
 		}
-
+		*/
 		Emplacement empl = new Emplacement();
-		for()
+		List<Case> temp;
+		int lig = 0;
+		int col = 0;
+		for(lig = 0; lig < grille.nbLig(); lig++) {
+			temp = this.getLig(lig);
+			for(int col = 0; col<grille.nbCol(); col++) {
+				if(! temp.get(col).isPleine() ) {
+					empl.add(temp.get(col));
+				}
+			}
+			if(empl.size()>2) {
+				places.add(empl);
+			}
+		}
+		int lig = 0;
+		for(lig = 0; lig < grille.nbLig(); lig++) {
+			temp = this.getLig(lig);
+			for(int col = 0; col<grille.nbCol(); col++) {
+				if(! temp.get(col).isPleine() ) {
+					empl.add(temp.get(col));
+				}
+			}
+			if(empl.size()>2) {
+				places.add(empl);
+			}
+			
 		
 			
 			
