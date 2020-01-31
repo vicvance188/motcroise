@@ -53,52 +53,21 @@ public class GrillePlaces {
 
 	private void cherchePlaces(List<Case> cases) {
 		
-		
-		/*
-		int col = 0;
-		int lig = 0;
-		Emplacement temp = new Emplacement();
-
-		for (lig = 0; lig < grille.nbLig(); lig++) {
-			for (col = 0; col < grille.nbCol(); col++) {
-				if (grille.getCase(lig, col).getChar() != ' ' && grille.getCase(lig, col).getChar() != '*') {
-					if (grille.getCase(lig + 1, col).getChar() != ' '
-							&& grille.getCase(lig + 1, col).getChar() != '*') {
-						while (grille.getCase(lig + 1, col).getChar() != ' '
-								&& grille.getCase(lig + 1, col).getChar() != '*') {
-							temp.add(grille.getCase(lig, col));
-						}
-					}
-				}
-			}
-		}
-
-		for (col = 0; col < grille.nbCol(); col++) {
-			for (lig = 0; lig < grille.nbLig(); lig++) {
-				if (grille.getCase(lig, col).getChar() != ' ' && grille.getCase(lig, col).getChar() != '*') {
-					if (grille.getCase(lig, col + 1).getChar() != ' '
-							&& grille.getCase(lig, col + 1).getChar() != '*') {
-						while (col < grille.nbCol() && lig < grille.nbLig()
-								&& grille.getCase(lig, col + 1).getChar() != ' '
-								&& grille.getCase(lig, col + 1).getChar() != '*') {
-							temp.add(grille.getCase(lig, col));
-						}
-						places.add(temp);
-					}
-				}
-			}
-		}
-		*/
-		Emplacement empl = new Emplacement();
 		List<Case> temp;
 		int lig = 0;
 		int col = 0;
 		
 		for(lig = 0; lig < grille.nbLig(); lig++) {
 			temp = this.getLig(lig);
+			Emplacement empl = new Emplacement();
 			for(col = 0; col<grille.nbCol(); col++) {
-				if(! temp.get(col).isPleine() ) {
+				if(! temp.get(col).isPleine()) {
 					empl.add(temp.get(col));
+				}else {
+					if(empl.size()>2) {
+						places.add(empl);
+					empl = new Emplacement();
+					}
 				}
 			}
 			if(empl.size()>2) {
@@ -107,27 +76,22 @@ public class GrillePlaces {
 		}
 
 		for(col = 0; col < grille.nbLig(); col++) {
-			temp = this.getLig(lig);
-			for(col = 0; col<grille.nbCol(); col++) {
-				if(! temp.get(col).isPleine() ) {
-					empl.add(temp.get(col));
+			temp = this.getCol(col);
+			Emplacement empl = new Emplacement();
+			for(lig = 0; lig<grille.nbLig(); lig++) {
+				if(! temp.get(lig).isPleine()) {
+					empl.add(temp.get(lig));
+				}else {
+					if(empl.size()>2) {
+						places.add(empl);
+					empl = new Emplacement();
+					}
 				}
 			}
 			if(empl.size()>2) {
 				places.add(empl);
 			}
-			
-		
-			
-			
-			
-		/*
-		 * si elle est non pleine, nous l’ajoutons à l’emplacement, • sinon, nous
-		 * examinons la taille de l’emplacement construit, – s’il fait au moins deux
-		 * lettres, nous l’ajoutons aux emplacements de mots détectés, – sinon, nous
-		 * réinitialisons l’emplacement. N’oubliez pas (à la fin de l’itération)
-		 * d’ajouter le dernier emplacement trouvé s’il est assez long.
-		 */
+		}
 	}
 
 }
