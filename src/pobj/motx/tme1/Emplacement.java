@@ -6,19 +6,20 @@ import java.util.ArrayList;
 
 public class Emplacement {
 	private List<Case> lettres;
-	
+
 	public Emplacement() {
 		lettres = new ArrayList<Case>();
 	}
-	
+
+	@Override
 	public String toString() {
-		String res = "";
-		for(int index = 0; index<lettres.size(); index++) {
-			res += lettres.get(index);
+		StringBuilder sb = new StringBuilder();
+		for (String lettre : lettres) {
+			sb.append("lettre");
 		}
-		return res;
+		return sb.toString();
 	}
-	
+
 	public int size() {
 		return this.size();
 	}
@@ -30,5 +31,5 @@ public class Emplacement {
 	public Case get(int index) {
 		return lettres.get(index);
 	}
-	
+
 }
