@@ -7,10 +7,26 @@ public class GrillePlaces {
 
 	private List<Emplacement> places;
 	private Grille grille;
+	private int nbHorizontal;
 
 	public GrillePlaces(Grille grille) {
+		System.out.println("########################################");
+		System.out.println(grille);
+		System.out.println("########################################");
 		this.grille = grille;
-
+		places = new ArrayList<Emplacement>();
+		for (int i = 0; i < grille.nbLig(); i++) {
+			List<Case> cases = getLig(i);
+			cherchePlaces(cases);
+		}
+		nbHorizontal = places.size();
+		for (int i = 0; i < grille.nbCol(); i++) {
+			List<Case> cases = getCol(i);
+			cherchePlaces(cases);
+		}
+		System.out.println("########################################");
+		System.out.println(this);
+		System.out.println("########################################");
 	}
 
 	public List<Emplacement> getPlaces() {
@@ -18,80 +34,51 @@ public class GrillePlaces {
 	}
 
 	public int getNbHorizontal() {
-		// ????
+		return nbHorizontal;
 	}
 
+	@Override
 	public String toString() {
-		String res = "";
-		for (int i = 0; i < places.size(); i++) {
-			for (int j = 0; j < places.get(i).size(); j++) {
-				res += places.get(i).get(j).toString();
-				res += "  ";
-			}
-			res += "\n";
+		StringBuilder sb = new StringBuilder();
+		sb.append("liste de mots detectes:\n");
+		for (Emplacement e : places) {
+			sb.append(e+"\n");
+		}
+		return sb.toString();
+	}
+
+	private List<Case> getLig(int lig){
+		List<Case> res = new ArrayList<Case>();
+		for (int col = 0; col < grille.nbCol(); col++) {
+			res.add(grille.getCase(lig, col));
 		}
 		return res;
 	}
 
-	private List<Case> getLig(int lig){
-		int col = 0;
-		List<Case>res = new ArrayList<Case>();
-		for(col=0; col<grille.nbCol();col++) {
-			res.add(grille.getCase(lig, col));
-		}
-		return res;		
-	}
-
 	private List<Case> getCol(int col) {
-		int lig = 0;
-		List<Case>res = new ArrayList<Case>();
-		for(lig=0; lig<grille.nbCol();lig++) {
+		List<Case> res = new ArrayList<Case>();
+		for (int lig = 0; lig < grille.nbLig(); lig++) {
 			res.add(grille.getCase(lig, col));
 		}
-		return res;		
+		return res;
 	}
 
 	private void cherchePlaces(List<Case> cases) {
-		
-		List<Case> temp;
-		int lig = 0;
-		int col = 0;
-		
-		for(lig = 0; lig < grille.nbLig(); lig++) {
-			temp = this.getLig(lig);
-			Emplacement empl = new Emplacement();
-			for(col = 0; col<grille.nbCol(); col++) {
-				if(! temp.get(col).isPleine()) {
-					empl.add(temp.get(col));
-				}else {
-					if(empl.size()>2) {
-						places.add(empl);
-					empl = new Emplacement();
-					}
+		Emplacement e = new Emplacement();
+		for (Case c : cases) {
+			if (!c.isPleine()) {
+				e.add(c);
+			} else {
+				if (e.size() >= 2){
+					places.add(e);
+					e.clear();
+				} else {
+					e.clear();
 				}
-			}
-			if(empl.size()>2) {
-				places.add(empl);
 			}
 		}
-
-		for(col = 0; col < grille.nbLig(); col++) {
-			temp = this.getCol(col);
-			Emplacement empl = new Emplacement();
-			for(lig = 0; lig<grille.nbLig(); lig++) {
-				if(! temp.get(lig).isPleine()) {
-					empl.add(temp.get(lig));
-				}else {
-					if(empl.size()>2) {
-						places.add(empl);
-					empl = new Emplacement();
-					}
-				}
-			}
-			if(empl.size()>2) {
-				places.add(empl);
-			}
+		if (e.size() >= 2){
+			places.add(e);
 		}
 	}
-
 }

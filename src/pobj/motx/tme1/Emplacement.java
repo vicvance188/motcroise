@@ -14,22 +14,22 @@ public class Emplacement {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		for (String lettre : lettres) {
-			sb.append("lettre");
+		for (Case lettre : lettres) {
+			sb.append(lettre.getChar());
 		}
 		return sb.toString();
 	}
 
 	public int size() {
-		return this.size();
+		return lettres.size();
 	}
 
-	public void add(Case case1) {
-		this.add(case1);
+	public void add(Case c) {
+		lettres.add(c);
 	}
 
-	public Case get(int index) {
-		return lettres.get(index);
+	public void clear() {
+		lettres.clear();
 	}
 
 }
