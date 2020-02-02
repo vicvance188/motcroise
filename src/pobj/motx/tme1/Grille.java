@@ -22,7 +22,7 @@ public class Grille {
 		return grille[lig][col];
 	}
 
-@Override
+	@Override
 	public String toString() {
 		boolean isGrlFormat = false;
 		return GrilleLoader.serialize(this, isGrlFormat);
