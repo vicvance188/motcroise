@@ -10,9 +10,8 @@ public class GrillePlaces {
 	private int nbHorizontal;
 
 	public GrillePlaces(Grille grille) {
-		System.out.println("########################################");
+		System.out.println("Voici la grille:");
 		System.out.println(grille);
-		System.out.println("########################################");
 		this.grille = grille;
 		places = new ArrayList<Emplacement>();
 		for (int i = 0; i < grille.nbLig(); i++) {
@@ -24,9 +23,7 @@ public class GrillePlaces {
 			List<Case> cases = getCol(i);
 			cherchePlaces(cases);
 		}
-		System.out.println("########################################");
 		System.out.println(this);
-		System.out.println("########################################");
 	}
 
 	public List<Emplacement> getPlaces() {
@@ -40,9 +37,9 @@ public class GrillePlaces {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("liste de mots detectes:\n");
+		sb.append("liste d'emplacements detectes:\n");
 		for (Emplacement e : places) {
-			sb.append(e+"\n");
+			sb.append("emplacement de taille "+e.size()+":\t"+"\""+e+"\""+"\n");
 		}
 		return sb.toString();
 	}
@@ -71,10 +68,8 @@ public class GrillePlaces {
 			} else {
 				if (e.size() >= 2){
 					places.add(e);
-					e.clear();
-				} else {
-					e.clear();
 				}
+				e = new Emplacement();
 			}
 		}
 		if (e.size() >= 2){

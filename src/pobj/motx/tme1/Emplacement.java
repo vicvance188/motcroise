@@ -27,9 +27,4 @@ public class Emplacement {
 	public void add(Case c) {
 		lettres.add(c);
 	}
-
-	public void clear() {
-		lettres.clear();
-	}
-
 }
