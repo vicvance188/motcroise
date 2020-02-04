@@ -96,7 +96,6 @@ public class Dictionnaire {
 		return cpt;
 	}
 
-
 	@Override
 	public String toString() {
 		if (size() == 1) {
