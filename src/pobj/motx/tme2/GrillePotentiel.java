@@ -41,4 +41,8 @@ public class GrillePotentiel {
   public List<Dictionnaire> getMotsPot() {
     return motsPot;
   }
+
+  public GrillePotentiel fixer(int m, String soluce) {
+    return new GrillePotentiel(grille.fixer(m, soluce), dicoComplet);
+  }
 }

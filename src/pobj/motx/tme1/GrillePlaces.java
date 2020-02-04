@@ -113,4 +113,14 @@ public class GrillePlaces {
 			places.add(e);
 		}
 	}
+
+	public GrillePlaces fixer(int m, String soluce) {
+		Grille g = grille.copy();
+		int i = 0;
+		for (Case c : places.get(m).getLettres()) {
+			g.getCase(c.getLig(), c.getCol()).setChar(soluce.charAt(i));
+			i ++;
+		}
+		return new GrillePlaces(g);
+	}
 }
