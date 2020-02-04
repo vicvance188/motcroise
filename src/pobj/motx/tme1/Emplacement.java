@@ -44,4 +44,8 @@ public class Emplacement {
 	public void add(Case c) {
 		lettres.add(c);
 	}
+
+	public List<Case> getLettres(){
+		return lettres;
+	}
 }

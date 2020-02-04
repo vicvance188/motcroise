@@ -2,6 +2,7 @@ package pobj.motx.tme2;
 
 import pobj.motx.tme1.GrillePlaces;
 import pobj.motx.tme1.Emplacement;
+import pobj.motx.tme1.Case;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,9 +18,15 @@ public class GrillePotentiel {
     this.motsPot = new ArrayList<Dictionnaire>();
 
     Dictionnaire dico = new Dictionnaire();
+    int i;
     for (Emplacement e : grille.getPlaces()) {
       dico = dicoComplet.copy();
       dico.filtreLongueur(e.size());
+      i = 0;
+      for (Case c : e.getLettres()) {
+        if (!c.isVide()) dico.filtreParLettre(c.getChar(), i);
+        i++;
+      }
       motsPot.add(dico);
     }
   }
