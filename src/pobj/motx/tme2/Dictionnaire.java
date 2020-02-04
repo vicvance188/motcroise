@@ -2,6 +2,9 @@ package pobj.motx.tme2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * Un ensemble de mots.
@@ -11,6 +14,20 @@ public class Dictionnaire {
 
 	// stockage des mots
 	private List<String> mots = new ArrayList<>();
+
+	public static Dictionnaire loadDictionnaire(String path) {
+		Dictionnaire dico = new Dictionnaire();
+		// Try-with-resource : cette syntaxe permet d’accéder au contenu du fichier ligne par ligne.
+		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+			for (String line = br.readLine(); line !=null; line = br.readLine()) {
+				dico.add(line);
+			}
+		} catch(IOException e) {
+			// Problème d’accès au fichier.
+			e.printStackTrace();
+		}
+		return dico;
+	}
 
 	/**
 	 * Ajoute un mot au Dictionnaire, en dernière position.
@@ -27,7 +44,7 @@ public class Dictionnaire {
 	public int size() {
 		return mots.size();
 	}
-	
+
 	/**
 	 * Accès au i-eme mot du dictionnaire.
 	 * @param i l'index du mot recherché, compris entre 0 et size-1.
@@ -50,7 +67,7 @@ public class Dictionnaire {
 	/**
 	 * Retire les mots qui ne font pas exactement "len" caractères de long.
 	 * Attention cette opération modifie le Dictionnaire, utiliser copy() avant de filtrer pour ne pas perdre d'information.
-	 * @param len la longueur voulue 
+	 * @param len la longueur voulue
 	 * @return le nombre de mots supprimés
 	 */
 	public int filtreLongueur(int len) {
@@ -66,7 +83,7 @@ public class Dictionnaire {
 		return cpt;
 	}
 
-	
+
 	@Override
 	public String toString() {
 		if (size() == 1) {
@@ -75,5 +92,5 @@ public class Dictionnaire {
 			return "Dico size =" + size();
 		}
 	}
-	
+
 }
