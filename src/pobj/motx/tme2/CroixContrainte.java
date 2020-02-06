@@ -18,6 +18,7 @@ public class CroixContrainte implements IContrainte {
     //ensuite on garde les mots qui ont la bonne lettre au bon emplacement
     //on renvoie les deux dico
     // on fait l'intersection
+    return 0;
   }
 
 }
