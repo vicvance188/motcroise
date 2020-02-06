@@ -83,6 +83,12 @@ public class Dictionnaire {
 		return cpt;
 	}
 
+	/**
+	 * filtre le dictionnaire avec uniquement les mots contenant la lettre c à l'emplacement i
+	 * @param c caractère que nous souhaitons garder
+	 * @param i emplacement du dit caractère
+	 * @return dictionnaire filtré
+	 */
 	public int filtreParLettre(char c, int i) {
 		List<String> cible = new ArrayList<>();
 		int cpt=0;
@@ -104,5 +110,6 @@ public class Dictionnaire {
 			return "Dico size =" + size();
 		}
 	}
+
 
 }
