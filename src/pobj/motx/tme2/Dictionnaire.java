@@ -25,7 +25,7 @@ public class Dictionnaire {
     } catch(IOException e) {
       // Problème d’accès au fichier.
       e.printStackTrace();
-    }F
+    }
     return dico;
   }
 
