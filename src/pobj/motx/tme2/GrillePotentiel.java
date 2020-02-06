@@ -18,13 +18,12 @@ public class GrillePotentiel {
   private Dictionnaire       dicoComplet;
   /** un dico complet de la langue française */
   private List<Dictionnaire> motsPot;
-
   /** domaine de chaque emplacement de la grille */
 
   /**
    * constructeur de la classe GrillePotentiel : initialise le attributs aux
    * valeurs données initialise le dommaine des emplacements
-   * 
+   *
    * @param grille
    *          notre grille partiellement remplie
    * @param dicoComplet
@@ -53,7 +52,7 @@ public class GrillePotentiel {
   /**
    * rend vrai si et seulement si au moins un emplacement à un domaine
    * potentiellement vide
-   * 
+   *
    * @return True si au moins un emplacement à un domaine potentiellement vide,
    *         False sinon
    */
@@ -67,7 +66,7 @@ public class GrillePotentiel {
 
   /**
    * stocke le domaine de chaque emplacement de la grille
-   * 
+   *
    * @return List<Dictionnaire> le domaine de chaque emplacement de la grille dans
    *         le même ordre que la grille
    */
@@ -77,7 +76,7 @@ public class GrillePotentiel {
 
   /**
    * Initialise une nouvelle GrillePotentiel
-   * 
+   *
    * @param m
    *          emplacement du mot à ajouter
    * @param soluce

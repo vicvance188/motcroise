@@ -29,7 +29,7 @@ public class EnsembleLettre {
 
   /**
    * ajoute c à l'ensemble sans doublons
-   * 
+   *
    * @param c
    */
   public void add(Character c) {
@@ -66,7 +66,7 @@ public class EnsembleLettre {
     EnsembleLettre res = this.copy();
     res.ensemble.retainAll(e2.ensemble);
     return res;
-        
+
   }
 
   /**
@@ -77,7 +77,10 @@ public class EnsembleLettre {
     EnsembleLettre copie = new EnsembleLettre();
     copie.ensemble.addAll(ensemble);
     return copie;
-    
+
   }
 
+  public List<Character> getEnsemble() {
+    return ensemble;
+  }
 }
