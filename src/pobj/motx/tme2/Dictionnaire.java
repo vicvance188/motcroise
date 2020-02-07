@@ -87,7 +87,7 @@ public class Dictionnaire {
    * filtre le dictionnaire avec uniquement les mots contenant la lettre c à l'emplacement i
    * @param c caractère que nous souhaitons garder
    * @param i emplacement du dit caractère
-   * @return dictionnaire filtré
+   * @return le nombre de mots supprimés
    */
   public int filtreParLettre(char c, int i) {
     List<String> cible = new ArrayList<>();
@@ -100,6 +100,37 @@ public class Dictionnaire {
     }
     mots = cible;
     return cpt;
+  }
+
+  /**
+   * filtre le dictionnaire avec uniquement les mots contenant les lettres dans e à l'emplacement i
+   * @param e ensemble de caractères que nous souhaitons garder
+   * @param i emplacement du dit caractère
+   * @return le nombre de mots supprimés
+   */
+  public int filtreParLettres(EnsembleLettre e, int i) {
+    List<String> cible = new ArrayList<>();
+    int cpt=0;
+    for (String mot : mots) {
+      if (e.contains(mot.charAt(i)))
+        cible.add(mot);
+      else
+        cpt++;
+    }
+    mots = cible;
+    return cpt;
+  }
+
+  /**
+   * renvoie l’EnsembleLettre possible à une position donnée
+   * @param i emplacement du dit caractère
+   * @return l'ensemble
+   */
+  public EnsembleLettre lettresPosition(int i) {
+    EnsembleLettre res = new EnsembleLettre();
+    for (String s : mots)
+      res.add(s.charAt(i));
+    return res;
   }
 
   @Override

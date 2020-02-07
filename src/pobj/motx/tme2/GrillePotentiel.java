@@ -19,6 +19,8 @@ public class GrillePotentiel {
   /** un dico complet de la langue française */
   private List<Dictionnaire> motsPot;
   /** domaine de chaque emplacement de la grille */
+  private List<IContrainte> contraintes;
+  /** liste des contraintes */
 
   /**
    * constructeur de la classe GrillePotentiel : initialise le attributs aux
@@ -33,6 +35,7 @@ public class GrillePotentiel {
     this.grille = grille;
     this.dicoComplet = dicoComplet;
     this.motsPot = new ArrayList<Dictionnaire>();
+    this.contraintes = new ArrayList<IContrainte>();
 
     Dictionnaire dico = new Dictionnaire();
     int i;

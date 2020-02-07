@@ -66,21 +66,15 @@ public class EnsembleLettre {
     EnsembleLettre res = this.copy();
     res.ensemble.retainAll(e2.ensemble);
     return res;
-
   }
 
   /**
-   * retourne la copue de notre ensemble de lettre
+   * retourne la copie de notre ensemble de lettre
    * @return la copie
    */
   private EnsembleLettre copy() {
     EnsembleLettre copie = new EnsembleLettre();
     copie.ensemble.addAll(ensemble);
     return copie;
-
-  }
-
-  public List<Character> getEnsemble() {
-    return ensemble;
   }
 }

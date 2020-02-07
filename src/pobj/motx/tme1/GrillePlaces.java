@@ -21,7 +21,7 @@ public class GrillePlaces {
   /**
    * constructeur de notre classe GrillePlace faisant le recherche des
    * emplacements de la grille
-   * 
+   *
    * @param grille
    *          notre grille
    */
@@ -44,7 +44,7 @@ public class GrillePlaces {
 
   /**
    * getter retournant la liste d'emplacement trouvé
-   * 
+   *
    * @return la lsite d'emplacement trouvé
    */
   public List<Emplacement> getPlaces() {
@@ -53,7 +53,7 @@ public class GrillePlaces {
 
   /**
    * renvoie le nombre d'emplacement horrizontaux trouvé
-   * 
+   *
    * @return le nombre d'emplacement horrizontaux trouvé
    */
   public int getNbHorizontal() {
@@ -76,7 +76,7 @@ public class GrillePlaces {
   /**
    * methode permettant d'extraire une ligne de notre grille afin de fractionner
    * la recherche d'emplacement
-   * 
+   *
    * @param lig
    *          l'indice de la ligne que nous voulons retourner
    * @return la ligne que nous retournons (liste de Case)
@@ -92,7 +92,7 @@ public class GrillePlaces {
   /**
    * methode permettant d'extraire une colonne de notre grille afin de fractionner
    * la recherche d'emplacement
-   * 
+   *
    * @param col
    *          l'indice de la colonne que nous voulons retourné
    * @return la colonne que nous retournons (liste de Case)
@@ -107,7 +107,7 @@ public class GrillePlaces {
 
   /**
    * methode cherchant les emplacements dans une ligne donnée
-   * 
+   *
    * @param cases
    *          la ligne donnée
    */
@@ -129,10 +129,10 @@ public class GrillePlaces {
   }
 
   /**
-   * 
-   * @param m
-   * @param soluce
-   * @return
+   *
+   * @param m place du mot dans la grille
+   * @param soluce mot à placer
+   * @return une nouvelle grille avec le mot soluce placé à l'emplacement m
    */
   public GrillePlaces fixer(int m, String soluce) {
     Grille g = grille.copy();
