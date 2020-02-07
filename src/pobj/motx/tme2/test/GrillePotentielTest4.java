@@ -34,7 +34,7 @@ public class GrillePotentielTest4 {
 
 		assertTrue(!gp.isDead());
 
-		
+
 
 		int[][] expected = { {0,2,2,0},
 				{1,2,2,4}};
@@ -51,15 +51,15 @@ public class GrillePotentielTest4 {
 			// (m1,c1,m2,c2) dans cet ordre.
 			exp.add(new CroixContrainte(e[0], e[1], e[2], e[3]));
 		}
-		
+
 		assertEquals(expected.length, gp.getContraintes().size());
-		
+
 		for (IContrainte c : gp.getContraintes()) {
 			// penser à définir public boolean equals(Object o) dans CroixContrainte.
 			assertTrue(exp.contains(c));
 		}
 	}
-	
+
 	@Test
 	public void testMedium() {
 
@@ -96,7 +96,7 @@ public class GrillePotentielTest4 {
 
 	}
 
-	
+
 	@Test
 	public void testEnonce() {
 

@@ -12,7 +12,7 @@ public class CroixContrainte implements IContrainte {
   }
 
   public int reduce(GrillePotentiel grille) {
-    int a = 0, b = 0;
+    int i = 0;
 
     Dictionnaire d1 = grille.getMotsPot().get(m1);
     Dictionnaire d2 = grille.getMotsPot().get(m2);
@@ -23,10 +23,10 @@ public class CroixContrainte implements IContrainte {
     EnsembleLettre inter = e1.intersection(e2);
 
     if (e1.size() > inter.size())
-      a = d1.filtreParLettres(inter, c1);
+      i += d1.filtreParLettres(inter, c1);
     if (e2.size() > inter.size())
-      b = d2.filtreParLettres(inter, c2);
+      i += d2.filtreParLettres(inter, c2);
 
-    return a + b;
+    return i;
   }
 }

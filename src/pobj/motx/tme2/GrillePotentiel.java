@@ -39,6 +39,7 @@ public class GrillePotentiel {
 
     Dictionnaire dico = new Dictionnaire();
     int i;
+    int c1 = 0; int c2 = 0;
     for (Emplacement e : grille.getPlaces()) {
       dico = dicoComplet.copy();
       dico.filtreLongueur(e.size());
@@ -49,6 +50,18 @@ public class GrillePotentiel {
         i++;
       }
       motsPot.add(dico);
+    }
+    for(int m1 = 0; m1 < grille.getNbHorizontal(); m1++ ){
+      for(int m2 = grille.getNbHorizontal(); m2 < grille.getPlaces().size(); m2++ ){
+        for(Case case1 : grille.getPlaces().get(m1).getLettres()){
+          for(Case case2 : grille.getPlaces().get(m2).getLettres()){
+            if(case1.getLig() == case2.getLig() && case1.getCol() == case2.getCol())
+              contraintes.add(new CroixContrainte(m1, c1, m2, c2));
+            c2++;
+          }
+          c1++;
+        }
+      }
     }
   }
 
@@ -75,6 +88,15 @@ public class GrillePotentiel {
    */
   public List<Dictionnaire> getMotsPot() {
     return motsPot;
+  }
+
+  /**
+   * retourne la liste des contraintes
+   *
+   * @return List<IContraintes> la liste des contraintes
+   */
+  public List<IContrainte> getContraintes() {
+    return contraintes;
   }
 
   /**

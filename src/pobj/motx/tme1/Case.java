@@ -5,18 +5,18 @@ package pobj.motx.tme1;
 */
 public class Case {
 
-  private int lign; /** ligne de la case */
+  private int lig; /** ligne de la case */
   private int col;  /** colonne de la case */
   private char c;   /** contenu de la case */
 
   /**
   * Construit une case aux contenu et coordonnees initiales specifiees
-  * @param lign ligne initiale de la case
+  * @param lig ligne initiale de la case
   * @param col colonne initiale de la case
   * @param c contenu initial de la case
   */
-  public Case(int lign, int col, char c) {
-    this.lign = lign;
+  public Case(int lig, int col, char c) {
+    this.lig = lig;
     this.col = col;
     this.c = c;
   }
@@ -26,9 +26,8 @@ public class Case {
   * @return la ligne lign de la case
   */
   public int getLig() {
-    return lign;
+    return lig;
   }
-
   /**
   * Accede a la colonne de la case
   * @return la colonne col de la case
