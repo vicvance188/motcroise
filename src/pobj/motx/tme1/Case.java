@@ -28,6 +28,7 @@ public class Case {
   public int getLig() {
     return lig;
   }
+
   /**
   * Accede a la colonne de la case
   * @return la colonne col de la case
