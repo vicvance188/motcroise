@@ -29,4 +29,19 @@ public class CroixContrainte implements IContrainte {
 
     return i;
   }
+
+  @Override
+  public boolean equals(Object other) {
+    if (other == this)
+      return true;
+    if (! (other instanceof CroixContrainte))
+      return false;
+    CroixContrainte cr = (CroixContrainte) other;
+    return cr.m1 == m1 && cr.c1 == c1 && cr.m2 == m2 && cr.c2 == c2;
+  }
+
+  @Override
+  public int hashCode() {
+    return (m1 + c1 + m2 + c2) * 33;
+  }
 }

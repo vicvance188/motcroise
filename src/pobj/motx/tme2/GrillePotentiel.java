@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class GrillePotentiel {
 
-  private GrillePlaces       grille;
+  private GrillePlaces       gp;
   /** une grille ainsi que la liste des emplacements disponible */
   private Dictionnaire       dicoComplet;
   /** un dico complet de la langue française */
@@ -32,15 +32,14 @@ public class GrillePotentiel {
    *          notre dictionnaire non traité
    */
   public GrillePotentiel(GrillePlaces grille, Dictionnaire dicoComplet) {
-    this.grille = grille;
+    this.gp = grille;
     this.dicoComplet = dicoComplet;
     this.motsPot = new ArrayList<Dictionnaire>();
     this.contraintes = new ArrayList<IContrainte>();
 
     Dictionnaire dico = new Dictionnaire();
     int i;
-    int c1 = 0; int c2 = 0;
-    for (Emplacement e : grille.getPlaces()) {
+    for (Emplacement e : gp.getPlaces()) {
       dico = dicoComplet.copy();
       dico.filtreLongueur(e.size());
       i = 0;
@@ -51,15 +50,22 @@ public class GrillePotentiel {
       }
       motsPot.add(dico);
     }
-    for(int m1 = 0; m1 < grille.getNbHorizontal(); m1++ ){
-      for(int m2 = grille.getNbHorizontal(); m2 < grille.getPlaces().size(); m2++ ){
-        for(Case case1 : grille.getPlaces().get(m1).getLettres()){
-          for(Case case2 : grille.getPlaces().get(m2).getLettres()){
-            if(case1.getLig() == case2.getLig() && case1.getCol() == case2.getCol())
-              contraintes.add(new CroixContrainte(m1, c1, m2, c2));
-            c2++;
-          }
-          c1++;
+
+    List<Emplacement> places = gp.getPlaces();
+    List<Case> l1, l2;
+    Case croisement;
+    int c1, c2, x, y, nbHoriz = gp.getNbHorizontal();
+    for (int m1 = 0; m1 < nbHoriz; m1++) {
+      for (int m2 = nbHoriz; m2 < places.size(); m2++) {
+        l1 = places.get(m1).getLettres();
+        l2 = places.get(m2).getLettres();
+        x = l2.get(0).getCol();
+        y = l1.get(0).getLig();
+        croisement = gp.getGrille().getCase(y, x);
+        if (l1.contains(croisement) && l2.contains(croisement) && croisement.isVide()){
+          c1 = x - l1.get(0).getCol();
+          c2 = y - l2.get(0).getLig();
+          contraintes.add(new CroixContrainte(m1, c1, m2, c2));
         }
       }
     }
@@ -110,6 +116,6 @@ public class GrillePotentiel {
    *         l'affectation du mot soluce à l'emplacement m
    */
   public GrillePotentiel fixer(int m, String soluce) {
-    return new GrillePotentiel(grille.fixer(m, soluce), dicoComplet);
+    return new GrillePotentiel(gp.fixer(m, soluce), dicoComplet);
   }
 }
