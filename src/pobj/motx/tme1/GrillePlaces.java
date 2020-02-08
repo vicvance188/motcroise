@@ -52,14 +52,6 @@ public class GrillePlaces {
   }
 
   /**
-   * retourne la grille
-   * @return la grille
-   */
-  public Grille getGrille() {
-    return grille;
-  }
-
-  /**
    * renvoie le nombre d'emplacement horrizontaux trouvé
    *
    * @return le nombre d'emplacement horrizontaux trouvé

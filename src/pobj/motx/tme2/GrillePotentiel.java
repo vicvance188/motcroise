@@ -37,6 +37,7 @@ public class GrillePotentiel {
     this.motsPot = new ArrayList<Dictionnaire>();
     this.contraintes = new ArrayList<IContrainte>();
 
+    // Filtres par longueur et par lettre
     Dictionnaire dico = new Dictionnaire();
     int i;
     for (Emplacement e : gp.getPlaces()) {
@@ -51,22 +52,18 @@ public class GrillePotentiel {
       motsPot.add(dico);
     }
 
+    // Detection des croisements
     List<Emplacement> places = gp.getPlaces();
-    List<Case> l1, l2;
-    Case croisement;
-    int c1, c2, x, y, nbHoriz = gp.getNbHorizontal();
+    Emplacement l1, l2;
+    int c1, c2, nbHoriz = gp.getNbHorizontal();
     for (int m1 = 0; m1 < nbHoriz; m1++) {
       for (int m2 = nbHoriz; m2 < places.size(); m2++) {
-        l1 = places.get(m1).getLettres();
-        l2 = places.get(m2).getLettres();
-        x = l2.get(0).getCol();
-        y = l1.get(0).getLig();
-        croisement = gp.getGrille().getCase(y, x);
-        if (l1.contains(croisement) && l2.contains(croisement) && croisement.isVide()){
-          c1 = x - l1.get(0).getCol();
-          c2 = y - l2.get(0).getLig();
+        l1 = places.get(m1);
+        l2 = places.get(m2);
+        c1 = l2.get(0).getCol() - l1.get(0).getCol();
+        c2 = l1.get(0).getLig() - l2.get(0).getLig();
+        if (c1 >= 0 && c1 < l1.size() && c2 >=0 && c2 < l2.size() && l1.get(c1).isVide())
           contraintes.add(new CroixContrainte(m1, c1, m2, c2));
-        }
       }
     }
   }

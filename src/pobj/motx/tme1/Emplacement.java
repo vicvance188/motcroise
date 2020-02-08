@@ -46,7 +46,17 @@ public class Emplacement {
   }
 
   /**
-   * @return l'emplacement
+   * retourne la case à l'indice i
+   * @param i indice de la case à retourner
+   * @return la case
+   */
+  public Case get(int i) {
+    return lettres.get(i);
+  }
+
+  /**
+   * retourne la liste des lettres de l'emplacement
+   * @return la liste
    */
   public List<Case> getLettres(){
     return lettres;
