@@ -66,6 +66,7 @@ public class GrillePotentiel {
           contraintes.add(new CroixContrainte(m1, c1, m2, c2));
       }
     }
+    propage();
   }
 
   /**
@@ -114,5 +115,19 @@ public class GrillePotentiel {
    */
   public GrillePotentiel fixer(int m, String soluce) {
     return new GrillePotentiel(gp.fixer(m, soluce), dicoComplet);
+  }
+
+  private boolean propage() {
+    int n;
+    while(true) {
+      n = 0;
+      for (IContrainte c : contraintes) {
+        n += c.reduce(this);
+      }
+      if (isDead())
+        return false;
+      if (n == 0)
+        return true;
+    }
   }
 }
