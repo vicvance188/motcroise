@@ -64,7 +64,7 @@ public class GrillePotentiel {
         c2 = l1.get(0).getLig() - l2.get(0).getLig();
         if (c1 >= 0 && c1 < l1.size() && c2 >=0 && c2 < l2.size() && l1.get(c1).isVide())
           contraintes.add(new CroixContrainte(m1, c1, m2, c2));
-      } 
+      }
     }
     propage();
   }
@@ -117,6 +117,11 @@ public class GrillePotentiel {
     return new GrillePotentiel(gp.fixer(m, soluce), dicoComplet);
   }
 
+  /**
+   * effectue la propagation des contraintes jusqu'à stabilité
+   * @return true si la stabilité est atteinte,
+   *          false si le mot croisé est irréalisable
+   */
   private boolean propage() {
     int n;
     while(true) {
