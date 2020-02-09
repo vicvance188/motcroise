@@ -64,7 +64,7 @@ public class GrillePotentiel {
         c2 = l1.get(0).getLig() - l2.get(0).getLig();
         if (c1 >= 0 && c1 < l1.size() && c2 >=0 && c2 < l2.size() && l1.get(c1).isVide())
           contraintes.add(new CroixContrainte(m1, c1, m2, c2));
-      }
+      } 
     }
     propage();
   }
