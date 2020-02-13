@@ -28,7 +28,7 @@ public class MotX implements ICSP {
   }
 
   public boolean isConsistent() {
-    return liste_dico.size() == 0;
+    return !gp.isDead();
   }
 
   public ICSP assign(IVariable vi, String val) {
