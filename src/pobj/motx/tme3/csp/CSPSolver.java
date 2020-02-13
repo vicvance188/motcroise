@@ -25,7 +25,7 @@ public class CSPSolver {
 		ICSP next = null;
 		// On est garantis que toute variable a un domaine non nul
 		for (String val : vi.getDomain()) {
-			System.out.println("Fixe var :" + vi + " à " + val);
+			//System.out.println("Fixe var :" + vi + " à " + val);
 			next = problem.assign(vi, val);
 			next = solve(next);
 			if (next.isConsistent()) {

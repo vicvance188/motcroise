@@ -39,7 +39,7 @@ public class GrillePlaces {
       List<Case> cases = getCol(i);
       cherchePlaces(cases);
     }
-    System.out.println(this);
+    //System.out.println(this);
   }
 
   /**
