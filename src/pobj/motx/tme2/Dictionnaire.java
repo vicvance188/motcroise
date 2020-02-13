@@ -14,6 +14,7 @@ public class Dictionnaire {
 
   // stockage des mots
   private List<String> mots = new ArrayList<>();
+  private EnsembleLettre [] cache = null;
 
   public static Dictionnaire loadDictionnaire(String path) {
     Dictionnaire dico = new Dictionnaire();
@@ -65,6 +66,7 @@ public class Dictionnaire {
   public Dictionnaire copy () {
     Dictionnaire copy = new Dictionnaire();
     copy.mots.addAll(mots);
+    copy.cache = cache;
     return copy;
   }
 
@@ -84,6 +86,8 @@ public class Dictionnaire {
         cpt++;
     }
     mots = cible;
+    if (cpt > 0)
+      cache = null;
     return cpt;
   }
 
@@ -103,6 +107,8 @@ public class Dictionnaire {
         cpt++;
     }
     mots = cible;
+    if (cpt > 0)
+      cache = null;
     return cpt;
   }
 
@@ -122,6 +128,8 @@ public class Dictionnaire {
         cpt++;
     }
     mots = cible;
+    if (cpt > 0)
+      cache = null;
     return cpt;
   }
 
@@ -130,11 +138,19 @@ public class Dictionnaire {
    * @param i emplacement du dit caractère
    * @return l'ensemble
    */
-  public EnsembleLettre lettresPosition(int i) {
+  public EnsembleLettre lettresPosition(int index) {
     EnsembleLettre res = new EnsembleLettre();
-    for (String s : mots)
-      res.add(s.charAt(i));
-    return res;
+    if (mots.isEmpty())
+      return res;
+    if (cache == null)
+      cache = new EnsembleLettre[mots.get(0).length()];
+    if (cache[index] == null) {
+      for (String s : mots) {
+        res.add(s.charAt(index));
+      }
+      cache[index] = res;
+    }
+    return cache[index];
   }
 
   @Override
