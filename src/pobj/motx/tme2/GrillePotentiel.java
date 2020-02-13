@@ -21,6 +21,7 @@ public class GrillePotentiel {
   /** domaine de chaque emplacement de la grille */
   private List<IContrainte> contraintes;
   /** liste des contraintes */
+  private List<Dictionnaire> potentiel;
 
   /**
    * constructeur de la classe GrillePotentiel : initialise le attributs aux
@@ -50,6 +51,46 @@ public class GrillePotentiel {
         i++;
       }
       motsPot.add(dico);
+    }
+
+    // Detection des croisements
+    List<Emplacement> places = gp.getPlaces();
+    Emplacement l1, l2;
+    int c1, c2, nbHoriz = gp.getNbHorizontal();
+    for (int m1 = 0; m1 < nbHoriz; m1++) {
+      for (int m2 = nbHoriz; m2 < places.size(); m2++) {
+        l1 = places.get(m1);
+        l2 = places.get(m2);
+        c1 = l2.get(0).getCol() - l1.get(0).getCol();
+        c2 = l1.get(0).getLig() - l2.get(0).getLig();
+        if (c1 >= 0 && c1 < l1.size() && c2 >=0 && c2 < l2.size() && l1.get(c1).isVide())
+          contraintes.add(new CroixContrainte(m1, c1, m2, c2));
+      }
+    }
+    propage();
+  }
+
+  public GrillePotentiel(GrillePlaces grille, Dictionnaire dicoComplet, List<Dictionnaire> potentiel) {
+    this.gp = grille;
+    this.dicoComplet = dicoComplet;
+    this.motsPot = new ArrayList<Dictionnaire>();
+    this.contraintes = new ArrayList<IContrainte>();
+    this.potentiel = potentiel;
+
+    // Filtres par longueur et par lettre
+    Dictionnaire dico = new Dictionnaire();
+    int i, j = 0;
+    for (Emplacement e : gp.getPlaces()) {
+      dico = potentiel.get(j).copy();
+      dico.filtreLongueur(e.size());
+      i = 0;
+      for (Case c : e.getLettres()) {
+        if (!c.isVide())
+          dico.filtreParLettre(c.getChar(), i);
+        i++;
+      }
+      motsPot.add(dico);
+      j++;
     }
 
     // Detection des croisements
@@ -122,7 +163,7 @@ public class GrillePotentiel {
    *         l'affectation du mot soluce à l'emplacement m
    */
   public GrillePotentiel fixer(int m, String soluce) {
-    return new GrillePotentiel(gp.fixer(m, soluce), dicoComplet);
+    return new GrillePotentiel(gp.fixer(m, soluce), dicoComplet, motsPot);
   }
 
   /**
