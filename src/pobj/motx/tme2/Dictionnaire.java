@@ -54,6 +54,10 @@ public class Dictionnaire {
     return mots.get(i);
   }
 
+  public List<String> getMots(){
+    return mots;
+  }
+
   /**
    * Rend une copie de ce Dictionnaire.
    * @return une copie identique de ce Dictionnaire

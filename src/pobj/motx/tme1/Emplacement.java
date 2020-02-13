@@ -61,4 +61,17 @@ public class Emplacement {
   public List<Case> getLettres(){
     return lettres;
   }
+
+  /**
+   * teste si l'emplacement contient au moins une case vide
+   * @return true si l'emplacement contient au moins une case vide,
+   *          false sinon
+   */
+  public boolean hasCaseVide() {
+    for (Case c : lettres) {
+      if (c.isVide())
+        return true;
+    }
+    return false;
+  }
 }

@@ -10,7 +10,7 @@ import pobj.motx.tme1.GrillePlaces;
 import pobj.motx.tme2.Dictionnaire;
 import pobj.motx.tme2.GrillePotentiel;
 import pobj.motx.tme3.adapt.MotX;
-import pobj.motx.tme3.csp.CSPSolverCorrige;
+import pobj.motx.tme3.csp.CSPSolver;
 import pobj.motx.tme3.csp.ICSP;
 
 public class GrilleSolverTest {
@@ -24,16 +24,16 @@ public class GrilleSolverTest {
 
 		GrillePlaces grille = new GrillePlaces(gr);
 		GrillePotentiel gp = new GrillePotentiel(grille, gut);
-		
+
 		// System.out.println(gp);
 		// assertTrue(! gp.isDead());
 
 		ICSP problem = new MotX(gp);
-		CSPSolverCorrige solver = new CSPSolverCorrige();
+		CSPSolver solver = new CSPSolver();
 
 		// solver.setStrat(new StratFirst());
 		// solver.setStrat(new StratMin());
-		
+
 		long timestamp = System.currentTimeMillis();
 		ICSP solution = solver.solve(problem);
 

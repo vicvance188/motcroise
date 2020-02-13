@@ -104,6 +104,14 @@ public class GrillePotentiel {
   }
 
   /**
+   * retourne la grillePlaces
+   * @return gp
+   */
+  public GrillePlaces getGrillePlaces() {
+    return gp;
+  }
+
+  /**
    * Initialise une nouvelle GrillePotentiel
    *
    * @param m
