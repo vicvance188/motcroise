@@ -25,6 +25,7 @@ public class DicoVariable implements IVariable {
 
   @Override
   public String toString() {
-    return super.toString(); //TODO
+    //return "domaine = "+domaine;
+    return super.toString();
   }
 }
