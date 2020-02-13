@@ -18,8 +18,8 @@ public class GrilleSolverTest {
 	@Test
 	public void testHard() {
 		Dictionnaire gut = Dictionnaire.loadDictionnaire("data/frgut.txt");
-		//Grille gr = GrilleLoader.loadGrille("data/hard.grl");
-		Grille gr = GrilleLoader.loadGrille("data/larger.grl");
+		Grille gr = GrilleLoader.loadGrille("data/hard.grl");
+		//Grille gr = GrilleLoader.loadGrille("data/larger.grl");
 
 		System.out.println(gr);
 
