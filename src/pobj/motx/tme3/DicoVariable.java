@@ -12,7 +12,7 @@ public class DicoVariable implements IVariable {
   public DicoVariable(int index, GrillePotentiel gp) {
     this.index = index;
     this.gp = gp;
-    this.domaine = gp.getMotsPot().get(index).copy().getMots();
+    this.domaine = gp.getMotsPot().get(index).getMots();
   }
 
   public List<String> getDomain() {

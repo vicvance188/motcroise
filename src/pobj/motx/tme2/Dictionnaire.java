@@ -63,7 +63,7 @@ public class Dictionnaire {
    * Rend une copie de ce Dictionnaire.
    * @return une copie identique de ce Dictionnaire
    */
-  public Dictionnaire copy () {
+  public Dictionnaire copy() {
     Dictionnaire copy = new Dictionnaire();
     copy.mots.addAll(mots);
     copy.cache = cache;
