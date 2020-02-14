@@ -14,6 +14,7 @@ public class Dictionnaire {
 
   // stockage des mots
   private List<String> mots = new ArrayList<>();
+  // cache de notre ensemble de lettre, pour une réutilisation future
   private EnsembleLettre [] cache = null;
 
   public static Dictionnaire loadDictionnaire(String path) {

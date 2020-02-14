@@ -11,6 +11,10 @@ import java.util.List;
  * dans notre grille
  *
  */
+/**
+ * @author 3701419
+ *
+ */
 public class GrillePotentiel {
 
   private GrillePlaces       gp;
@@ -19,7 +23,7 @@ public class GrillePotentiel {
   /** un dico complet de la langue française */
   private List<Dictionnaire> motsPot;
   /** domaine de chaque emplacement de la grille */
-  private List<IContrainte> contraintes;
+  private List<IContrainte>  contraintes;
   /** liste des contraintes */
   private List<Dictionnaire> potentiel;
 
@@ -63,13 +67,24 @@ public class GrillePotentiel {
         l2 = places.get(m2);
         c1 = l2.get(0).getCol() - l1.get(0).getCol();
         c2 = l1.get(0).getLig() - l2.get(0).getLig();
-        if (c1 >= 0 && c1 < l1.size() && c2 >=0 && c2 < l2.size() && l1.get(c1).isVide())
+        if (c1 >= 0 && c1 < l1.size() && c2 >= 0 && c2 < l2.size() && l1.get(c1).isVide())
           contraintes.add(new CroixContrainte(m1, c1, m2, c2));
       }
     }
     propage();
   }
 
+  /**
+   * constructeur de la classe GrillePotentiel : initialise le attributs aux
+   * valeurs données initialise le dommaine des emplacements
+   *
+   * @param grille
+   *          notre grille partiellement remplie
+   * @param dicoComplet
+   *          notre dictionnaire non traité
+   * @param potentiel
+   *          list de dictionnaire potentiel
+   */
   public GrillePotentiel(GrillePlaces grille, Dictionnaire dicoComplet, List<Dictionnaire> potentiel) {
     this.gp = grille;
     this.dicoComplet = dicoComplet;
@@ -103,7 +118,7 @@ public class GrillePotentiel {
         l2 = places.get(m2);
         c1 = l2.get(0).getCol() - l1.get(0).getCol();
         c2 = l1.get(0).getLig() - l2.get(0).getLig();
-        if (c1 >= 0 && c1 < l1.size() && c2 >=0 && c2 < l2.size() && l1.get(c1).isVide())
+        if (c1 >= 0 && c1 < l1.size() && c2 >= 0 && c2 < l2.size() && l1.get(c1).isVide())
           contraintes.add(new CroixContrainte(m1, c1, m2, c2));
       }
     }
@@ -146,6 +161,7 @@ public class GrillePotentiel {
 
   /**
    * retourne la grillePlaces
+   * 
    * @return gp
    */
   public GrillePlaces getGrillePlaces() {
@@ -168,12 +184,13 @@ public class GrillePotentiel {
 
   /**
    * effectue la propagation des contraintes jusqu'à stabilité
-   * @return true si la stabilité est atteinte,
-   *          false si le mot croisé est irréalisable
+   * 
+   * @return true si la stabilité est atteinte, false si le mot croisé est
+   *         irréalisable
    */
   private boolean propage() {
     int n;
-    while(true) {
+    while (true) {
       n = 0;
       for (IContrainte c : contraintes) {
         n += c.reduce(this);

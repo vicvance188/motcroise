@@ -5,9 +5,9 @@ import pobj.motx.tme3.IVariable;
 
 /**
  * interface ICSP
- *
  */
 public interface ICSP {
+
 
   public List<IVariable> getVars();
 
@@ -15,3 +15,4 @@ public interface ICSP {
 
   public ICSP assign(IVariable vi, String val);
 }
+

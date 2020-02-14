@@ -8,11 +8,20 @@ import pobj.motx.tme3.csp.ICSP;
 import pobj.motx.tme3.IVariable;
 import pobj.motx.tme3.DicoVariable;
 
+/**
+ * classe MotX servant a adapter le solveur à notre proSblème
+ *
+ */
 public class MotX implements ICSP {
 
   private GrillePotentiel gp;
   private List<IVariable> liste_dico;
 
+  /**
+   * Son constructeur
+   * initialisera une liste de DicoVariable, stockée dans un attribut.
+   * @param gp
+   */
   public MotX(GrillePotentiel gp) {
     this.gp = gp;
     this.liste_dico = new ArrayList<IVariable>();
@@ -23,14 +32,23 @@ public class MotX implements ICSP {
     }
   }
 
+  /**
+   * retourne notre liste de variable
+   */
   public List<IVariable> getVars() {
     return liste_dico;
   }
 
+  /**
+   * renvoie si le problème est consistent
+   */
   public boolean isConsistent() {
     return !gp.isDead();
   }
 
+  /** 
+   * assigne une nouvelle variable
+   */
   public ICSP assign(IVariable vi, String val) {
     if (vi instanceof DicoVariable) {
       DicoVariable dicoVar = (DicoVariable) vi;
