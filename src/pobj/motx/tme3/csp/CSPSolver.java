@@ -4,6 +4,8 @@ import pobj.motx.tme3.IVariable;
 
 public class CSPSolver {
 
+	IChoixVar stratVar;
+
 	public ICSP solve(ICSP problem) {
 		System.out.println("Solve : \n" + problem);
 		// Condition terminale : succès
@@ -38,5 +40,7 @@ public class CSPSolver {
 		return next;
 	}
 
-
+	public void setChoixVarStrat(IChoixVar strat) {
+		stratVar = strat;
+	}
 }
