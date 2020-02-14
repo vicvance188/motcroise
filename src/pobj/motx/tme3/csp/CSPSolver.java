@@ -1,10 +1,11 @@
 package pobj.motx.tme3.csp;
 
+import pobj.motx.tme3.IChoixVar;
 import pobj.motx.tme3.IVariable;
 
 public class CSPSolver {
 
-	IChoixVar stratVar;
+	IChoixVar stratVar; // BONUS 2
 
 	public ICSP solve(ICSP problem) {
 		System.out.println("Solve : \n" + problem);
