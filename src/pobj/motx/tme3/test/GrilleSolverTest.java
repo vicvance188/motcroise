@@ -1,6 +1,9 @@
 package pobj.motx.tme3.test;
 
 import static org.junit.Assert.*;
+import pobj.motx.tme3.IChoixVar;
+import pobj.motx.tme3.StratFirst;
+import pobj.motx.tme3.StratMin;
 
 import org.junit.Test;
 
@@ -18,8 +21,8 @@ public class GrilleSolverTest {
 	@Test
 	public void testHard() {
 		Dictionnaire gut = Dictionnaire.loadDictionnaire("data/frgut.txt");
-		//Grille gr = GrilleLoader.loadGrille("data/hard.grl");
-		Grille gr = GrilleLoader.loadGrille("data/larger.grl");
+		Grille gr = GrilleLoader.loadGrille("data/hard.grl");
+		// Grille gr = GrilleLoader.loadGrille("data/larger.grl");
 
 		System.out.println(gr);
 
@@ -32,8 +35,8 @@ public class GrilleSolverTest {
 		ICSP problem = new MotX(gp);
 		CSPSolver solver = new CSPSolver();
 
-		// solver.setStrat(new StratFirst());
-		// solver.setStrat(new StratMin());
+		// solver.setChoixVarStrat(new StratFirst());
+		solver.setChoixVarStrat(new StratMin());
 
 		long timestamp = System.currentTimeMillis();
 		ICSP solution = solver.solve(problem);

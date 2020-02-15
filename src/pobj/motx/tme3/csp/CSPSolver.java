@@ -23,7 +23,7 @@ public class CSPSolver {
 		}
 		// On choisit une variable arbitraire, ici la première
 		// On est garantis que ! getVars().isEmpty(), testé au dessus
-		IVariable vi = problem.getVars().get(0);
+		IVariable vi = stratVar.chooseVar(problem);
 
 		ICSP next = null;
 		// On est garantis que toute variable a un domaine non nul
