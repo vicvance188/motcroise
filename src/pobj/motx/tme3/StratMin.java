@@ -11,7 +11,7 @@ public class StratMin implements IChoixVar {
   public IVariable chooseVar(ICSP problem) {
     IVariable res = problem.getVars().get(0);
     for (IVariable v : problem.getVars())
-      if (v.getDomain().size() < v.getDomain().size())
+      if (v.getDomain().size() < res.getDomain().size())
         res = v;
     return res;
   }

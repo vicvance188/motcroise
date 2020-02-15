@@ -46,7 +46,7 @@ public class MotX implements ICSP {
     return !gp.isDead();
   }
 
-  /** 
+  /**
    * assigne une nouvelle variable
    */
   public ICSP assign(IVariable vi, String val) {

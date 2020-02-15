@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 import pobj.motx.tme3.IChoixVar;
 import pobj.motx.tme3.StratFirst;
 import pobj.motx.tme3.StratMin;
+import pobj.motx.tme3.StratBasique;
+import pobj.motx.tme3.StratAleatoire;
 
 import org.junit.Test;
 
@@ -21,8 +23,8 @@ public class GrilleSolverTest {
 	@Test
 	public void testHard() {
 		Dictionnaire gut = Dictionnaire.loadDictionnaire("data/frgut.txt");
-		Grille gr = GrilleLoader.loadGrille("data/hard.grl");
-		// Grille gr = GrilleLoader.loadGrille("data/larger.grl");
+		// Grille gr = GrilleLoader.loadGrille("data/hard.grl");
+		Grille gr = GrilleLoader.loadGrille("data/larger.grl");
 
 		System.out.println(gr);
 
@@ -37,6 +39,10 @@ public class GrilleSolverTest {
 
 		// solver.setChoixVarStrat(new StratFirst());
 		solver.setChoixVarStrat(new StratMin());
+
+		solver.setChoixValStrat(new StratBasique());
+		// solver.setChoixValStrat(new StratAleatoire());
+		// solver.setChoixValStrat(new StratFrequence());
 
 		long timestamp = System.currentTimeMillis();
 		ICSP solution = solver.solve(problem);
